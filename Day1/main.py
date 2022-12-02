@@ -13,8 +13,10 @@ def part1():
             calories_list.append(combined_cals)     # haha logic in try/except
             combined_cals = 0
 
-    print(f"Most calories contained by an elf: {max(calories_list)}")
+    return calories_list
 
+def part2():
+    pass
 
 # MAIN
-part1()
+print(f"Most calories contained by an elf: {part1()}")
