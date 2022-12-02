@@ -1,4 +1,4 @@
-with open("test-input.txt") as file:
+with open("input.txt") as file:
     lines = file.readlines()
 
 # X (1 point) beats C
@@ -10,10 +10,18 @@ winning_dict = {
     'Z': ('B', 3)
 }
 
+# For draws
+drawing_dict = {
+    'X': 'A',
+    'Y': 'B',
+    'Z': 'C'
+}
+
 def parse(list):
     new_list = []
     for element in list:
         new_list.append(element.strip('\n'))
+    return new_list
     
 
 def part1(input_list):
@@ -22,7 +30,7 @@ def part1(input_list):
         opponent = battle[0]
         you = battle[-1]
         # Draw
-        if you == opponent:
+        if drawing_dict[you][0] == opponent:
             score += winning_dict[you][1] + 3
         elif opponent == winning_dict[you][0]:
             score += winning_dict[you][1] + 6
@@ -31,4 +39,4 @@ def part1(input_list):
 
     return score
 
-print(part1())
+print(part1(parse(lines)))
