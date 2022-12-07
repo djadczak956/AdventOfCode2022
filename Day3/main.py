@@ -25,4 +25,22 @@ def part1(input_list):
     
     return sum
 
-print(part1(parse(lines)))
+def part2(input_list):
+    sum = 0
+    working_list = input_list
+    while working_list: # Python sees empty lists as false
+        print(sum)
+        group = []
+
+        for i in range(3):
+            group.append(working_list.pop(-1))
+
+        for letter in group[0]:
+            if letter in group[1] and letter in group[2]:
+                sum += letters.index(letter) + 1
+                break   # Break in order to prevent the same letter from being looked at multiple times
+
+    return sum
+
+#print(part1(parse(lines)))
+print(part2(parse(lines)))
