@@ -29,9 +29,8 @@ def part2(input_list):
     sum = 0
     working_list = input_list
     while working_list: # Python sees empty lists as false
-        print(sum)
         group = []
-
+        
         for i in range(3):
             group.append(working_list.pop(-1))
 
