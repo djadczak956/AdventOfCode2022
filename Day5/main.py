@@ -9,8 +9,18 @@ def parse(list):
         new_list.append(element.strip('\n'))
     return new_list
 
-def grid_to_matrix(input_grid):
-    matrix = []
-    for line in input_grid:
-        pass
-    return matrix
+def part1(input_list):
+    letters = []
+    # Adds lines until an empty line
+    for line in input_list:
+        if "\n" in line:
+            break
+        letters.append(line)
+    return letters
+    
+
+def part2():
+    pass
+
+# --------------- MAIN ----------------------
+print(part1(parse(lines)))
