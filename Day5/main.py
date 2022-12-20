@@ -12,10 +12,18 @@ def parse(list):
 def part1(input_list):
     letters = []
     # Adds lines until an empty line
+    print(input_list)
     for line in input_list:
-        if "\n" in line:
+        if "[" in line:
+            letters.append(line)
+        else:
             break
-        letters.append(line)
+        
+    
+    for col in range(5, len(letters), 4):
+        for row in letters[col]:
+            pass
+
     return letters
     
 
