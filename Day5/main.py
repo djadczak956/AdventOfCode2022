@@ -1,7 +1,7 @@
 from collections import deque
 import string
 
-with open('test-input.txt') as file:
+with open('input.txt') as file:
     lines = file.readlines()
 
 def parse(list):
@@ -36,11 +36,25 @@ def part1(input_list):
             if letters[row][col].isalpha():
                 stacks[(col + 1) // 4].append(letters[row][col])
 
-    return stacks
+    # Reverse each string to simulate stacks
+    for i in range(len(stacks)):
+        stacks[i].reverse()
+
+    # For each line of directions
+    for element in read_after_break(parse(input_list)):
+        amount, start, end = int(element.split()[1]), int(element.split()[3]), int(element.split()[5])  # Grabbing values from directions
+        for i in range(amount):
+            stacks[end-1].append(stacks[start-1].pop())
+
+    # The top of each stack combined into a code
+    code = ""
+    for element in stacks:
+        code += element[-1]
+    return code
     
 
 def part2():
     pass
 
 # --------------- MAIN ----------------------
-print(read_after_break(parse(lines)))
+print(part1(parse(lines)))
